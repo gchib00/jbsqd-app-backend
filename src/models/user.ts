@@ -12,6 +12,11 @@ const userSchema = new Schema({
     type: String,
     required: true
   },
+  coins: {
+    type: Number,
+    required: true,
+    default: 20
+  },
   password: {
     type: String,
     required: true,

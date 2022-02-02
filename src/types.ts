@@ -6,10 +6,11 @@ export interface CountryName {
 export interface UserObj {
   username: string;
   email: string;
+  coins: number;
   password: string;
 }
 export interface UserRegistrationObj extends UserObj {
-  repeatPassword: string;
+  repeatedPassword: string;
 }
 export interface UserLoginObj {
   username: string;
