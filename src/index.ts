@@ -11,6 +11,7 @@ const userRouter = require("./controllers/userRouter");
 app.use(express.json());
 env.config();
 app.use(cors());
+app.use(express.static("build"));
 app.use("/countries", countryRouter);
 app.use("/auth", authRouter);
 app.use("/user", userRouter);
