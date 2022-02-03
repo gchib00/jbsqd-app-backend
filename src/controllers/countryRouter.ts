@@ -9,10 +9,13 @@ router.get("/", async (req: Request, res: Response) => {
     if (!searchedCountry) {
       res.status(200).json(null); //if user doesn"t provide an input, we should return null and prevent API from being called
     }
-    const response = await fetch(`https://restcountries.com/v3.1/name/${searchedCountry}`)
-      .then((res: Response) => res.json());
+    const response = await fetch(`https://restcountries.com/v3.1/name/${searchedCountry}`);
+    if (!response.ok){
+      res.status(400).send({message: "API call failed"});
+    }
+    const countriesData = await response.json();
     const countryNames: CountryName[] = [];
-    response.map((countryData: any) => countryNames.push(countryData.name as CountryName));
+    countriesData.map((countryData: any) => countryNames.push(countryData.name as CountryName));
     res.status(200).json(countryNames);
   } catch(err) {
     console.error(err);

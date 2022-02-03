@@ -14,10 +14,10 @@ env.config();
 app.use(cors());
 
 app.use(express.static("build"));
-app.get("/*", (_req, res) => res.sendFile(path.join(__dirname, "../build/index.html")));
 app.use("/countries", countryRouter);
 app.use("/auth", authRouter);
 app.use("/user", userRouter);
+app.get("/*", (_req, res) => res.sendFile(path.join(__dirname, "../build/index.html")));
 
 const PORT = process.env.PORT;
 
